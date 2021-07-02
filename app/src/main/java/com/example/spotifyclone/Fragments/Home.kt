@@ -7,20 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.spotifyclone.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Home.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Home : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     companion object {
         fun newInstance(): Home{
@@ -28,14 +16,6 @@ class Home : Fragment() {
             var argumentos = Bundle()
             fragmentHome.arguments = argumentos
             return fragmentHome
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -47,5 +27,11 @@ class Home : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+
+
+    }
+
+    private inner class CategoriaAdapter(private val categorias)
 }

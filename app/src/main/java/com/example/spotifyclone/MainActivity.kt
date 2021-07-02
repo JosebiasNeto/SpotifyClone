@@ -18,22 +18,24 @@ class MainActivity : AppCompatActivity() {
 
     private var Content: FrameLayout? = null
 
-    private var mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
-        item ->
+    private var mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelecteListener@{ item ->
         when (item.itemId){
             R.id.nav_inicio -> {
                 val fragment = Home.newInstance()
                 addFragment(fragment)
+                return@OnNavigationItemSelecteListener true
             }
 
             R.id.nav_buscar -> {
                 val fragment = Buscar.newInstance()
                 addFragment(fragment)
+                return@OnNavigationItemSelecteListener true
             }
 
             R.id.nav_biblioteca -> {
                 val fragment = Biblioteca.newInstance()
                 addFragment(fragment)
+                return@OnNavigationItemSelecteListener true
             }
         }
         false
