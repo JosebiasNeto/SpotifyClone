@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         val fragment = Home.newInstance()
         addFragment(fragment)
+
+        supportActionBar!!.hide()
     }
 
     private fun addFragment(fragment: Fragment){
