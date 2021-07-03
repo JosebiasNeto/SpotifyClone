@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SimpleAdapter
 import android.widget.TextView
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.spotifyclone.R
 import model.Categoria
 import com.example.spotifyclone.R.layout.categoria_item
+import model.Album
 
 
 class Home : Fragment() {
@@ -44,6 +46,13 @@ class Home : Fragment() {
             val categoria = Categoria()
             categoria.titulo = "Categoria$c"
 
+            val albuns: MutableList<Album> = ArrayList()
+            for (a in 0..19){
+                val album = Album()
+                album.album = R.drawable.spotify
+                albuns.add(album)
+            }
+            categoria.albuns = albuns
             categorias.add(categoria)
         }
 
@@ -71,6 +80,31 @@ class Home : Fragment() {
     private inner class CategoriaHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(categoria: Categoria){
             itemView.findViewById<TextView>(R.id.tv_titulo).text = categoria.titulo
+            itemView.findViewById<RecyclerView>(R.id.recycler_albuns).adapter = AlbunsAdapter(categoria.albuns)
+            itemView.findViewById<RecyclerView>(R.id.recycler_albuns).layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         }
     }
+
+    //////////////---------------------------------------------------------------------
+
+    private inner class AlbunsAdapter(private val albuns: MutableList<Album>): RecyclerView.Adapter<AlbunsHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder {
+            return AlbunsHolder(layoutInflater.inflate(R.layout.album_item, parent, false))
+        }
+
+        override fun onBindViewHolder(holder: AlbunsHolder, position: Int) {
+            val album = albuns[position]
+            holder.bind(album)
+        }
+
+        override fun getItemCount(): Int = albuns.size
+    }
+
+    private inner class AlbunsHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        fun bind(album: Album){
+            itemView.findViewById<ImageView>(R.id.iv_album).setImageResource(album.album)
+        }
+    }
+
+
 }
