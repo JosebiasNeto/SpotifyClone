@@ -1,11 +1,19 @@
 package model
 
-class Categoria(
+import com.google.gson.annotations.SerializedName
 
-    var titulo: String = "",
-    var albuns: MutableList<Album> = ArrayList()
+data class Categoria(
+
+    @SerializedName("titulo") var titulo: String = "",
+    @SerializedName("albuns") var albuns: List<Album> = arrayListOf()
 )
 
     class Album(
-        var album: Int = 0
+        @SerializedName("url_image") var album: String = ""
     )
+
+data class  Categorias(@SerializedName("categoria")
+
+val categorias: List<Categoria>
+
+)
