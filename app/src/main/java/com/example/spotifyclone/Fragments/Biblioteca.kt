@@ -1,23 +1,30 @@
 package com.example.spotifyclone.Fragments
 
+import android.graphics.Insets.add
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
+import android.support.v4.view.ViewPager
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.Insets.add
+import androidx.core.view.OneShotPreDrawListener.add
+import com.example.spotifyclone.FragmentsTab.Albuns
+import com.example.spotifyclone.FragmentsTab.Artistas
+import com.example.spotifyclone.FragmentsTab.Playlists
 import com.example.spotifyclone.R
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Biblioteca.newInstance] factory method to
- * create an instance of this fragment.
- */
-class Biblioteca : Fragment() {
+
+
+
+class Biblioteca : android.support.v4.app.Fragment() {
 
     companion object {
         fun newInstance(): Biblioteca{
@@ -27,17 +34,8 @@ class Biblioteca : Fragment() {
             return fragmentBiblioteca
         }
     }
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,4 +45,22 @@ class Biblioteca : Fragment() {
         return inflater.inflate(R.layout.fragment_biblioteca, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var adapter = FragmentPagerItemAdapter(requireActivity().supportFragmentManager, FragmentPagerItems.with(context)
+            .add("Playlists", Playlists::class.java)
+            .add("Artistas", Artistas::class.java)
+            .add("Álbuns", Albuns::class.java)
+            .create()
+        )
+
+        val viewpager = view.findViewById<ViewPager>(R.id.viewpager)
+        val viewpagertab = view.findViewById<ViewPager>(R.id.viewpagertab)
+        viewpager.adapter = adapter
+        viewpagertab.setViewPager(viewpager)
+    }
+
 }
+
+
+
+
