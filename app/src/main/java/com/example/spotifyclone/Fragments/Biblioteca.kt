@@ -3,13 +3,13 @@ package com.example.spotifyclone.Fragments
 import android.graphics.Insets.add
 import android.os.Bundle
 import android.provider.MediaStore
-import android.support.v4.view.ViewPager
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.Insets.add
 import androidx.core.view.OneShotPreDrawListener.add
+import androidx.fragment.app.Fragment
 import com.example.spotifyclone.FragmentsTab.Albuns
 import com.example.spotifyclone.FragmentsTab.Artistas
 import com.example.spotifyclone.FragmentsTab.Playlists
@@ -17,14 +17,12 @@ import com.example.spotifyclone.R
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.FragmentActivity
+
+import androidx.viewpager.widget.ViewPager
 
 
-
-
-
-class Biblioteca : android.support.v4.app.Fragment() {
+class Biblioteca : Fragment(){
 
     companion object {
         fun newInstance(): Biblioteca{
@@ -46,7 +44,7 @@ class Biblioteca : android.support.v4.app.Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var adapter = FragmentPagerItemAdapter(requireActivity().supportFragmentManager, FragmentPagerItems.with(context)
+        var adapter = FragmentPagerItemAdapter(activity.supportFragmentManager, FragmentPagerItems.with(context)
             .add("Playlists", Playlists::class.java)
             .add("Artistas", Artistas::class.java)
             .add("Álbuns", Albuns::class.java)
