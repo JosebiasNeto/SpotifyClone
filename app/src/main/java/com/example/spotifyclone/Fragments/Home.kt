@@ -1,5 +1,6 @@
 package com.example.spotifyclone.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.*
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.spotifyclone.Detalhes
 import com.example.spotifyclone.R
 import com.example.spotifyclone.R.layout.categoria_item
 import com.squareup.picasso.Picasso
@@ -83,17 +85,22 @@ class Home : Fragment() {
     private inner class CategoriaHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(categoria: Categoria){
             itemView.findViewById<TextView>(R.id.tv_titulo).text = categoria.titulo
-            itemView.findViewById<RecyclerView>(R.id.recycler_albuns).adapter = AlbunsAdapter(categoria.albuns)
+            itemView.findViewById<RecyclerView>(R.id.recycler_albuns).adapter = AlbunsAdapter(categoria.albuns){ album ->
+
+                val intent = Intent(context, Detalhes::class.java)
+                startActivity(intent)
+
+            }
             itemView.findViewById<RecyclerView>(R.id.recycler_albuns).layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         }
     }
 
     //////////////---------------------------------------------------------------------
 
-    private inner class AlbunsAdapter(private val albuns: List<Album>): RecyclerView.Adapter<AlbunsHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder {
-            return AlbunsHolder(layoutInflater.inflate(R.layout.album_item, parent, false))
-        }
+    private inner class AlbunsAdapter(private val albuns: List<Album>, private val listener: ((Album) -> Unit)?): RecyclerView.Adapter<AlbunsHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbunsHolder =
+            AlbunsHolder(layoutInflater.inflate(R.layout.album_item, parent, false), listener)
+
 
         override fun onBindViewHolder(holder: AlbunsHolder, position: Int) {
             val album = albuns[position]
@@ -103,7 +110,7 @@ class Home : Fragment() {
         override fun getItemCount(): Int = albuns.size
     }
 
-    private inner class AlbunsHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    private inner class AlbunsHolder(itemView: View, val onClick: ((Album) -> Unit)?): RecyclerView.ViewHolder(itemView){
         fun bind(album: Album){
            // itemView.findViewById<ImageView>(R.id.iv_album).setImageResource(album.album)
             if (album.album.isEmpty()){
@@ -111,6 +118,9 @@ class Home : Fragment() {
             } else {
                 Picasso.get().load(album.album).placeholder(R.drawable.placeholder).fit()
                     .into(itemView.findViewById<ImageView>(R.id.iv_album))
+                itemView.findViewById<ImageView>(R.id.iv_album).setOnClickListener {
+                    onClick?.invoke(album)
+                }
             }
         }
     }
