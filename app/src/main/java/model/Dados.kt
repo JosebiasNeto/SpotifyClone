@@ -10,7 +10,7 @@ data class Categoria(
 )
 
     class Album(
-        @SerializedName("url_image") var album: String = ""
+        @SerializedName("url_imagem") var album: String = ""
     )
 
 data class  Categorias(@SerializedName("categoria")
