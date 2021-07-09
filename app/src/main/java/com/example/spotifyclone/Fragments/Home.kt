@@ -88,6 +88,8 @@ class Home : Fragment() {
             itemView.findViewById<RecyclerView>(R.id.recycler_albuns).adapter = AlbunsAdapter(categoria.albuns){ album ->
 
                 val intent = Intent(context, Detalhes::class.java)
+                intent.putExtra("album", album.album)
+                intent.putExtra("titulo", titulos[album.id])
                 startActivity(intent)
 
             }
