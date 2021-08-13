@@ -1,4 +1,4 @@
-package model
+package com.example.spotifyclone.data
 
 import retrofit2.Call
 import retrofit2.Retrofit

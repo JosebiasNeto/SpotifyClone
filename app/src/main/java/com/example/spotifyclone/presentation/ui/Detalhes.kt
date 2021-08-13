@@ -1,4 +1,4 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.presentation.ui
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,7 +7,8 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toolbar
-import com.example.spotifyclone.Fragments.Home
+import com.example.spotifyclone.presentation.Fragments.Home
+import com.example.spotifyclone.R
 import com.squareup.picasso.Picasso
 
 class Detalhes : AppCompatActivity() {
@@ -23,10 +24,6 @@ class Detalhes : AppCompatActivity() {
             Picasso.get().load(album).into(findViewById<ImageView>(R.id.iv_detalhe))
            findViewById<TextView>(R.id.tv_titulo_album).text = titulo
         }
-
-
-
-
 
         window.statusBarColor = Color.LTGRAY
         findViewById<Toolbar>(R.id.toolbar).setNavigationIcon(getDrawable(R.drawable.ic_baseline_arrow_back_24))

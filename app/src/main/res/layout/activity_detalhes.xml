@@ -11,7 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Detalhes"
+    tools:context=".presentation.ui.Detalhes"
     android:background="@drawable/bg_gradient">
 
     <Toolbar

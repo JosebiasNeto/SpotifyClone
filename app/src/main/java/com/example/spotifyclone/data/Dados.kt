@@ -1,26 +1,20 @@
-package model
+package com.example.spotifyclone.data
 
 import com.example.spotifyclone.R
 import com.google.gson.annotations.SerializedName
 
 data class Categoria(
-
     @SerializedName("titulo") var titulo: String = "",
     @SerializedName("albuns") var albuns: List<Album> = arrayListOf()
 )
-
     class Album(
         @SerializedName("url_imagem") var album: String = "",
         @SerializedName("id") var id: Int = 0
-
     )
 
 data class  Categorias(@SerializedName("categoria")
-
 val categorias: List<Categoria>
-
 )
-
 data class Secao(
     var secao: Int,
     var nomeSecao: String
@@ -29,7 +23,6 @@ data class Secao(
 class SecaoBuilder {
     var secao: Int = 0
     var nomeSecao: String = ""
-
     fun build(): Secao = Secao(secao, nomeSecao)
 }
 

@@ -1,19 +1,17 @@
-package com.example.spotifyclone.Fragments
+package com.example.spotifyclone.presentation.Fragments
 
 import android.os.Bundle
-import android.os.RecoverySystem
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.spotifyclone.R
-import model.Secao
-import model.dados
+import com.example.spotifyclone.data.Secao
+import com.example.spotifyclone.data.dados
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

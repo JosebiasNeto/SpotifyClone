@@ -1,4 +1,4 @@
-package com.example.spotifyclone.Fragments
+package com.example.spotifyclone.presentation.Fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.spotifyclone.Detalhes
+import com.example.spotifyclone.presentation.ui.Detalhes
 import com.example.spotifyclone.R
-import com.example.spotifyclone.R.layout.categoria_item
 import com.squareup.picasso.Picasso
-import model.*
+import com.example.spotifyclone.data.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

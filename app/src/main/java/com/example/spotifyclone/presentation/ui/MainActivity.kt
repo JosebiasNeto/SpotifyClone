@@ -1,37 +1,34 @@
-package com.example.spotifyclone
+package com.example.spotifyclone.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.example.spotifyclone.Fragments.Biblioteca
-import com.example.spotifyclone.Fragments.Buscar
-import com.example.spotifyclone.Fragments.Home
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.example.spotifyclone.presentation.Fragments.Biblioteca
+import com.example.spotifyclone.presentation.Fragments.Buscar
+import com.example.spotifyclone.presentation.Fragments.Home
+import com.example.spotifyclone.R
+import com.example.spotifyclone.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private var Content: FrameLayout? = null
 
-    private var mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelecteListener@{ item ->
+    private var mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener OnNavigationItemSelecteListener@{ item ->
         when (item.itemId){
             R.id.nav_inicio -> {
                 val fragment = Home.newInstance()
                 addFragment(fragment)
                 return@OnNavigationItemSelecteListener true
             }
-
             R.id.nav_buscar -> {
                 val fragment = Buscar.newInstance()
                 addFragment(fragment)
                 return@OnNavigationItemSelecteListener true
             }
-
             R.id.nav_biblioteca -> {
                 val fragment = Biblioteca.newInstance()
                 addFragment(fragment)
@@ -42,8 +39,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         Content = findViewById(R.id.content)
         findViewById<BottomNavigationView>(R.id.bottom_menu).setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
@@ -60,6 +58,4 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.content, fragment, fragment.javaClass.simpleName)
             .commit()
     }
-
-
 }

@@ -1,4 +1,4 @@
-package com.example.spotifyclone.Fragments
+package com.example.spotifyclone.presentation.Fragments
 
 import android.os.Bundle
 
@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.spotifyclone.FragmentsTab.Albuns
-import com.example.spotifyclone.FragmentsTab.Artistas
-import com.example.spotifyclone.FragmentsTab.Playlists
+import com.example.spotifyclone.presentation.FragmentsTab.Albuns
+import com.example.spotifyclone.presentation.FragmentsTab.Artistas
+import com.example.spotifyclone.presentation.FragmentsTab.Playlists
 import com.example.spotifyclone.R
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
